@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 const Inicio = () => {
   return (
     <>
-      <div className="d-flex flex-column">
+      <div className="d-flex flex-column divHome">
         <h1 className="text-center">Bienvenido a MAB Estética</h1>
         <p>Tu lugar para el cuidado y bienestar estético.</p>
       </div>

@@ -6,7 +6,6 @@ form {
   width: 450px;
 }
 
-input {
-  background: #ffffff !important;
-
+.form-control {
+  background-color: #ffffff !important;
 }
