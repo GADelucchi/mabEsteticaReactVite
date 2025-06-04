@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import SubmitButton from "../SubmitButton/SubmitButton";
+import { useEffect, useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import Button from "../Button/Button";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -100,7 +100,7 @@ const Login = () => {
         )}
 
         <div className="d-flex justify-content-between align-items-center">
-          <SubmitButton text="Ingresar" />
+          <Button text="Ingresar" />
           <a href="#" className="text-decoration-none">
             Olvidé mi contraseña
           </a>

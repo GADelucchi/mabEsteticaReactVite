@@ -2,8 +2,7 @@
 import React from "react";
 import "./Header.css";
 import { useAuth } from "../../context/AuthContext";
-import { NavLink } from "react-router-dom";
-import Navbar from "../Navbar";
+import Navbar from "../Navbar/Navbar";
 
 // Code
 const Header = () => {
