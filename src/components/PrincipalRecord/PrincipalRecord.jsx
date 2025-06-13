@@ -1,10 +1,18 @@
 // Imports
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./PrincipalRecord.css";
 import Button from "../Button/Button";
+import { Tooltip } from "bootstrap";
 
 // Code
-const PrincipalRecord = ({canvasRef, startDrawing, draw, endDrawing, clearCanvas, sendInfoToServer}) => {
+const PrincipalRecord = ({
+  canvasRef,
+  startDrawing,
+  draw,
+  endDrawing,
+  clearCanvas,
+  sendInfoToServer,
+}) => {
   const [birthDate, setBirthDate] = useState("");
   const [age, setAge] = useState(null);
   const [showTextArea, setShowTextArea] = useState({
@@ -47,9 +55,21 @@ const PrincipalRecord = ({canvasRef, startDrawing, draw, endDrawing, clearCanvas
     }));
   };
 
+  useEffect(() => {
+    const tooltipTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="tooltip"]'
+    );
+    tooltipTriggerList.forEach((tooltipTriggerEl) => {
+      new Tooltip(tooltipTriggerEl);
+    });
+  }, []);
+
   return (
     <div id="gestionFichas" className="d-flex">
       <form id="newPatientForm">
+        <legend>
+          <strong>Ficha de primera vez</strong>
+        </legend>
         {/* Sección 1: Datos personales */}
         <fieldset>
           <legend>Datos personales</legend>
@@ -576,6 +596,40 @@ const PrincipalRecord = ({canvasRef, startDrawing, draw, endDrawing, clearCanvas
               placeholder="Describa las reacciones"
             ></textarea>
           </div>
+          <div className="mb-3">
+            <label htmlFor="fototipo" className="form-label">
+              Fototipo{" "}
+              <i
+                className="bi bi-info-circle"
+                data-bs-toggle="tooltip"
+                title="Clasificación según la respuesta de la piel a la exposición solar. Ej: I (muy clara), VI (muy oscura)"
+                style={{ cursor: "pointer" }}
+              ></i>
+            </label>
+            <textarea
+              className="form-control"
+              id="fototipo"
+              placeholder="Ingrese el fototipo del paciente"
+              rows="1"
+            ></textarea>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="biotipo" className="form-label">
+              Biotipo{" "}
+              <i
+                className="bi bi-info-circle"
+                data-bs-toggle="tooltip"
+                title="Clasificación morfológica del cuerpo: Ectomorfo (delgado), Mesomorfo (atlético), Endomorfo (tendencia a acumular grasa)"
+                style={{ cursor: "pointer" }}
+              ></i>
+            </label>
+            <textarea
+              className="form-control"
+              id="biotipo"
+              placeholder="Ingrese el biotipo del paciente"
+              rows="3"
+            ></textarea>
+          </div>
         </fieldset>
 
         {/* Sección 6: Autorización */}
@@ -649,7 +703,11 @@ const PrincipalRecord = ({canvasRef, startDrawing, draw, endDrawing, clearCanvas
 
         {/* Botón de envío */}
         <div className="d-flex justify-content-center">
-          <Button text="Enviar" onClick={sendInfoToServer} className={"btn btn-meli"}/>
+          <Button
+            text="Enviar"
+            onClick={sendInfoToServer}
+            className={"btn btn-meli"}
+          />
         </div>
       </form>
     </div>
